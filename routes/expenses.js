@@ -1,19 +1,11 @@
 const express = require("express");
-const {
-  getExpenses,
-  createExpense,
-  updateExpense,
-  deleteExpense,
-} = require("../services/expenseService");
-
-const requireSecret = require("../middlewares/requiresecret");
-const validateExpense = require("../middlewares/validateexpenes");
-
 const router = express.Router();
+const upload = require("../middlewares/upload");
+const expenseService = require("../services/expenseService");
 
-router.get("/", getExpenses);
-router.post("/", validateExpense, createExpense);
-router.put("/:id", updateExpense);
-router.delete("/:id", requireSecret, deleteExpense);
+router.get("/", expenseService.getExpenses);
+router.post("/", upload.single("image"), expenseService.createExpense);
+router.put("/:id", upload.single("image"), expenseService.updateExpense);
+router.delete("/:id", expenseService.deleteExpense);
 
 module.exports = router;
