@@ -1,0 +1,7 @@
+<h1>Expense Details</h1>
+<h2><%= expense.name %> - $<%= expense.amount %></h2>
+<% if (expense.image) { %>
+<img src="<%= expense.image %>" width="300" />
+<% } %>
+<br />
+<a href="/expenses">Back to all</a>

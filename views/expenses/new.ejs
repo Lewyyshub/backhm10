@@ -1,0 +1,7 @@
+<h1>Create New Expense</h1>
+<form action="/expenses" method="POST" enctype="multipart/form-data">
+  <input type="text" name="name" placeholder="Name" required />
+  <input type="number" name="amount" placeholder="Amount" required />
+  <input type="file" name="image" accept="image/*" required />
+  <button type="submit">Add Expense</button>
+</form>

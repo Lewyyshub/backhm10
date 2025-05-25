@@ -1,0 +1,21 @@
+<h1>All Expenses</h1>
+<a href="/expenses/new">Add New Expense</a>
+<ul>
+  <% expenses.forEach(exp => { %>
+  <li>
+    <h3><%= exp.name %> - $<%= exp.amount %></h3>
+    <% if (exp.image) { %>
+    <img src="<%= exp.image %>" width="100" />
+    <% } %>
+    <a href="/expenses/<%= exp.id %>">Details</a> |
+    <a href="/expenses/<%= exp.id %>/edit">Edit</a> |
+    <form
+      action="/expenses/<%= exp.id %>?_method=DELETE"
+      method="POST"
+      style="display: inline"
+    >
+      <button type="submit">Delete</button>
+    </form>
+  </li>
+  <% }) %>
+</ul>
